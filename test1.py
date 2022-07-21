@@ -2,7 +2,7 @@ import csv
 import pymysql
 '모듈 가져오기'
 
-conn = pymysql.connect(host='localhost', user='root', password='1234', db='etf', charset='utf8') 
+conn = pymysql.connect(host='localhost', user='root', password='1234', db='etf_db', charset='utf8') 
 cursor = conn.cursor()
 # DB연결
 
