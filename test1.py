@@ -6,7 +6,7 @@ conn = pymysql.connect(host='localhost', user='root', password='1234', db='etf_d
 cursor = conn.cursor()
 # DB연결
 
-sql = "INSERT INTO etf (ETF_code, ETF_name, ETF_date, ETF_index, market, assets) VALUES (%s, %s, %s, %s, %s, %s)" 
+sql = "INSERT IGNORE INTO etf (ETF_code, ETF_name, ETF_date, ETF_index, market, assets) VALUES (%s, %s, %s, %s, %s, %s)" 
 #쿼리문 etf 테이블에 정보 등록
 
 f = open('data_5558_20220719.csv','r')

@@ -1,12 +1,9 @@
 package com.recode.controller;
 
-import java.util.Locale;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,7 +30,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/loginForm", method = RequestMethod.GET)
-	public String loginForm(Locale locale, Model model) {
+	public String loginForm() {
 		// 회원가입 후 로그인 페이지로 이동
 		return "/member/loginForm";
 	}
@@ -41,7 +38,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberDTO memberDTO, HttpSession session) {
 		System.out.println(memberDTO.getId());
-		
+
 		MemberDTO memberDTO2 = memberService.checkMember(memberDTO);
 		System.out.println(memberDTO2);
 		if (memberDTO2 != null) {
@@ -51,5 +48,20 @@ public class MemberController {
 		} else {
 			return "redirect:/member/loginForm";
 		}
+	}
+
+	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		// 로그아웃(세션 초기화)
+		session.invalidate();
+		// 회원가입 후 로그인 페이지로 이동
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/member/memberInfo", method = RequestMethod.GET)
+	public String memberInfo(HttpSession session) {
+		// 로그아웃(세션 초기화)
+		// 회원가입 후 로그인 페이지로 이동
+		return "/member/memberInfo";
 	}
 }

@@ -1,4 +1,8 @@
 @charset "UTF-8";
-.list-icon {
-    background-image: url("/resources/img/logo.png");
+
+.white-space {
+	white-space: nowrap;
+}
+.f15{
+	font-size: 14px;
 }

@@ -16,7 +16,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void joinMember(MemberDTO memberDTO) {
 		memberDAO.joinMember(memberDTO);
-
 	}
 
 	@Override
