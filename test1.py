@@ -16,7 +16,8 @@ import pymysql
 # 웹 크롤링
 def download():
     options = webdriver.ChromeOptions() ;
-
+    
+    # 다운로드 절대경로 
     prefs = {"download.default_directory" : "D:\CSV"};
 
     options.add_experimental_option("prefs",prefs);
@@ -45,14 +46,15 @@ def download():
 # 파일 리스트 조회
 def fileName():
     print(download())
+
     list_of_files = glob.glob('D:\CSV\*') # * means all if need specific format then *.csv
     latest_file = max(list_of_files, key=os.path.getctime)
     return latest_file
 
-fname = fileName()
+# 파일의 데이터를 DB에 입력
+def dbInsert():
+    fname = fileName()
 
-
-def dbInsert(fname):
     conn = pymysql.connect(host='localhost', user='root', password='1234', db='etf_db', charset='utf8') 
     cursor = conn.cursor()
     # DB연결
@@ -77,9 +79,10 @@ def dbInsert(fname):
     conn.close()
     f.close()
 
-job1 = schedule.every(30).seconds.do(dbInsert(fname))
+# 매일 9시 21분에 실행
+job1 = schedule.every().day.at("09:21").do(dbInsert)
 
+# 반복실행
 while True:
-
     schedule.run_pending()
-    sleep(10)
+    sleep(2)
