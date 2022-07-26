@@ -48,4 +48,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String joinForm() {
+		// joinForm 회원가입 페이지로 이동
+		return "test";
+	}
+	
 }
