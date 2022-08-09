@@ -57,11 +57,12 @@ public class MemberController {
 		// 회원가입 후 로그인 페이지로 이동
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value = "/member/memberInfo", method = RequestMethod.GET)
 	public String memberInfo(HttpSession session) {
 		// 로그아웃(세션 초기화)
 		// 회원가입 후 로그인 페이지로 이동
 		return "/member/memberInfo";
 	}
+
 }

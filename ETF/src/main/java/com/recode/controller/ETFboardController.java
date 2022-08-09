@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,10 @@ public class ETFboardController {
 		model.addAttribute("etfList", etfList);
 		return "/etf/etfBoard";
 	}
+	
+	@Scheduled(cron = "0/2 * * * * *")
+    public void testScheduler(){
+        System.out.println("스케줄링 테스트");
+    }
 
 }

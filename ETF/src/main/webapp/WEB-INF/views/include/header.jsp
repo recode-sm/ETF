@@ -30,6 +30,13 @@
 					</button>				
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<li><span class="dropdown-item">${sessionScope.id }님</span> </li>
+						<li><a id="custom-login-btn" href="javascript:loginWithKakao()">
+							  <img
+							    src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+							    alt="카카오 로그인 버튼"
+							  />
+							</a>
+						</li>
 						<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberInfo">내정보</a></li>
 						<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 					</ul>
